@@ -32,7 +32,7 @@ public class MovieSystemConfig {
     }
     
     @Bean
-    public Player qqPlayer(){
+    public Player qqPlayer(/*Movie movie*/){ //此时如果指定此参数，当Spring在装配Bean时，无法确定当前的Movie是哪个Bean，就会出现NoUniqueBeanDefinitionException
         QQPlayer player = new QQPlayer(otherMovie());
         return player;
     }
