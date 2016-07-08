@@ -11,3 +11,29 @@ NoUniqueBeanDefinitionException的研究
 ##JAVAConfig装配
 
 在Configuration中明示要装配的Bean
+
+
+    @Bean
+    public Player qqPlayer(HistoryMovie movie){
+        QQPlayer player = new QQPlayer(movie);
+        return player;
+    }
+
+
+或
+
+    @Bean
+    public Player qqPlayer(/*HistoryMovie movie*/){
+        QQPlayer player = new QQPlayer(otherMovie());
+        return player;
+    }
+    
+都是正确的
+
+    @Bean
+    public Player qqPlayer(Movie movie){
+        QQPlayer player = new QQPlayer(movie);
+        return player;
+    }
+    
+这时，Spring就傻了，初始化这个Bean时哪知道Movie接口对应的是哪个Bean
