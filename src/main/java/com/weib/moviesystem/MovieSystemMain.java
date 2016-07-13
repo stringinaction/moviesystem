@@ -17,7 +17,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class MovieSystemMain {
     public static void main(String[] args) throws Exception{
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MovieSystemConfig.class);
-        String[] x = context.getBeanDefinitionNames();
+        OtherMovie movie = (OtherMovie) context.getBean("othermovie");
+        movie.play();
+        
         QQPlayer player = context.getBean(QQPlayer.class); 
         player.play();
         context.close();
