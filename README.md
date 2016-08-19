@@ -41,4 +41,5 @@ NoUniqueBeanDefinitionException的研究
         return player;
     }
     
-这时，Spring就傻了，初始化这个Bean时哪知道Movie接口对应的是哪个Bean
+当实现Movie的Bean只有一个时，这样写没有问题，
+但当Movie的Bean有多个时，这时参数就无法确定要注入哪个Bean因此就会有问题

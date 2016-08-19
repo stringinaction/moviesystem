@@ -21,10 +21,10 @@ import org.springframework.context.annotation.Configuration;
 //@ComponentScan(basePackageClasses={Player.class, Movie.class})
 public class MovieSystemConfig {
     
-    @Bean(name="historymovie")
-    public Movie historyMovie(){
-        return new HistoryMovie();
-    }
+//    @Bean(name="historymovie")
+//    public Movie historyMovie(){
+//        return new HistoryMovie();
+//    }
     
     @Bean(name="othermovie")
     public Movie otherMovie(){
@@ -32,8 +32,8 @@ public class MovieSystemConfig {
     }
     
     @Bean
-    public Player qqPlayer(/*Movie movie*/){ //此时如果指定此参数，当Spring在装配Bean时，无法确定当前的Movie是哪个Bean，就会出现NoUniqueBeanDefinitionException
-        QQPlayer player = new QQPlayer(otherMovie());
+    public Player qqPlayer(Movie movie){ //此时如果指定此参数，当Spring在装配Bean时，无法确定当前的Movie是哪个Bean，就会出现NoUniqueBeanDefinitionException
+        QQPlayer player = new QQPlayer(movie);
         return player;
     }
 }
